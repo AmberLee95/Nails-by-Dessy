@@ -13,15 +13,11 @@
 --white: #fff;
 }
 
-* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
 font-family: 'Poppins', sans-serif;
-background: var(--pink-bg);
+background-color: var(--pink-bg);
 color: var(--black);
 line-height: 1.6;
 }
@@ -32,7 +28,6 @@ margin: auto;
 padding: 2rem 1.5rem 4rem;
 }
 
-/* Header */
 .brand {
 background: var(--black);
 color: var(--white);
@@ -45,12 +40,12 @@ letter-spacing: 1px;
 margin-bottom: 3rem;
 }
 
-/* Price Section */
 .price-section {
-background: rgba(255,255,255,0.6);
+background: rgba(255,255,255,0.8);
 border-radius: 20px;
 padding: 2rem;
 box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+margin-bottom: 3rem;
 }
 
 .price-section h2 {
@@ -60,9 +55,7 @@ margin-bottom: 1.5rem;
 text-align: center;
 }
 
-.service {
-margin-bottom: 2rem;
-}
+.service { margin-bottom: 2rem; }
 
 .service h3 {
 font-family: 'Playfair Display', serif;
@@ -70,9 +63,7 @@ font-size: 1.4rem;
 margin-bottom: 0.75rem;
 }
 
-.price-list {
-list-style: none;
-}
+.price-list { list-style: none; }
 
 .price-list li {
 display: flex;
@@ -82,73 +73,41 @@ font-weight: 500;
 color: var(--pink-dark);
 }
 
-/* CTA */
-.cta {
-margin-top: 3rem;
-text-align: center;
-}
+.cta { text-align: center; }
 
-.cta-box {
-display: inline-block;
+.cta a button {
 background: var(--black);
 color: var(--white);
-padding: 1.2rem 2rem;
+padding: 1rem 2rem;
+border: none;
 border-radius: 14px;
-font-size: 1.2rem;
+font-size: 1.1rem;
 font-weight: 500;
+cursor: pointer;
 box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-/* Footer */
+.cta small {
+display: block;
+margin-top: 0.75rem;
+font-size: 0.8rem;
+}
+
 footer {
 margin-top: 4rem;
 text-align: center;
 font-size: 0.9rem;
 opacity: 0.8;
 }
-
-@media (max-width: 600px) {
-.brand {
-font-size: 1.6rem;
-}
-.price-list li {
-font-size: 0.95rem;
-}
-}
-</style>
-</head>
-<body>
-<div class="container">
-<div class="brand">Nails by Dessy</div>
-
-<section class="price-section">
-<h2>Price List</h2>
-
-<div class="service">
-<h3>Gel X Full Set</h3>
-<ul class="price-list">
-<li><span>1 Color</span><span>$50</span></li>
-<li><span>Full Designed</span><span>$65</span></li>
-<li><span>Take Off</span><span>$25</span></li>
-</ul>
-</div>
-
-<div class="service">
-<h3>Gel Polish</h3>
-<ul class="price-list">
-<li><span>1 Color</span><span>$30</span></li>
-<li><span>Full Designed</span><span>$45</span></li>
-<li><span>Take Off & Shaped</span><span>$15</span></li>
-</ul>
-</div>
-</section>
-
-<div class="cta">
-<div class="cta-box">No Deposit = No Appointment</div>
+<!-- Replace # with your Square booking link -->
+<a href="#" target="_blank">
+<button>Book Appointment</button>
+</a>
+<small>A deposit must be made at time of booking.</small>
 </div>
 
 <footer>
-© 2026 Nails by Dessy · Booking coming soon
+© 2026 Nails by Dessy · Powered by Square Appointments
 </footer>
 </div>
 </body>
