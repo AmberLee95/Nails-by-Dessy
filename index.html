@@ -18,8 +18,19 @@
 body {
 font-family: 'Poppins', sans-serif;
 background-color: var(--pink-bg);
+/* Use a relative path so the image works on GitHub Pages. Upload "flyer.jpg" next to index.html */
+background-image: url('flyer.jpg');
+background-size: cover;
+background-position: center;
 color: var(--black);
 line-height: 1.6;
+}
+
+/* subtle overlay so text is readable over the flyer art */
+.overlay {
+background: rgba(246,193,207,0.92);
+min-height: 100vh;
+padding-bottom: 4rem;
 }
 
 .container {
@@ -41,7 +52,7 @@ margin-bottom: 3rem;
 }
 
 .price-section {
-background: rgba(255,255,255,0.8);
+background: rgba(255,255,255,0.85);
 border-radius: 20px;
 padding: 2rem;
 box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -75,7 +86,7 @@ color: var(--pink-dark);
 
 .cta { text-align: center; }
 
-.cta a button {
+.cta button {
 background: var(--black);
 color: var(--white);
 padding: 1rem 2rem;
@@ -87,28 +98,162 @@ cursor: pointer;
 box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-.cta small {
-display: block;
-margin-top: 0.75rem;
-font-size: 0.8rem;
+.cta small { display: block; margin-top: 0.75rem; font-size: 0.8rem; }
+
+.booking-section {
+display: none;
+margin-top: 3rem;
+background: rgba(255,255,255,0.95);
+padding: 2rem;
+border-radius: 20px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-footer {
-margin-top: 4rem;
-text-align: center;
-font-size: 0.9rem;
-opacity: 0.8;
+.booking-section h3 { font-family: 'Playfair Display', serif; margin-bottom: 1rem; }
+
+.booking-section label { display: block; margin-top: 1rem; font-weight: 500; }
+
+.booking-section select,
+.booking-section input { width: 100%; padding: 0.7rem; margin-top: 0.5rem; border-radius: 8px; border: 1px solid #ccc; }
+
+.booking-section .inline { display:flex; gap:0.5rem; }
+.booking-section .inline > * { flex:1; }
+
+.booking-section button {
+margin-top: 1.5rem;
+width: 100%;
+background: var(--pink-dark);
+color: white;
+border: none;
+padding: 0.9rem;
+border-radius: 10px;
+font-weight: 500;
+cursor: pointer;
 }
-<!-- Replace # with your Square booking link -->
-<a href="#" target="_blank">
-<button>Book Appointment</button>
-</a>
+
+footer { margin-top: 4rem; text-align: center; font-size: 0.9rem; opacity: 0.85; }
+
+@media (max-width:600px){ .brand{font-size:1.6rem;} }
+</style>
+</head>
+<body>
+<div class="overlay">
+<div class="container">
+<div class="brand">Nails by Dessy</div>
+
+<section class="price-section">
+<h2>Price List</h2>
+
+<div class="service">
+<h3>Gel X Full Set</h3>
+<ul class="price-list">
+<li><span>1 Color</span><span>$50</span></li>
+<li><span>Full Designed</span><span>$65</span></li>
+<li><span>Take Off</span><span>$25</span></li>
+</ul>
+</div>
+
+<div class="service">
+<h3>Gel Polish</h3>
+<ul class="price-list">
+<li><span>1 Color</span><span>$30</span></li>
+<li><span>Full Designed</span><span>$45</span></li>
+<li><span>Take Off & Shaped</span><span>$15</span></li>
+</ul>
+</div>
+</section>
+
+<div class="cta">
+<button id="bookBtn">Book Appointment</button>
 <small>A deposit must be made at time of booking.</small>
 </div>
 
+<!-- In-page booking form (works as a front-end flow).
+When you're ready to use Square, paste your Square public booking URL into the SQUARE_LINK variable below
+and we'll redirect clients there after they choose service/date/time. -->
+<div class="booking-section" id="bookingSection">
+<h3>Select Service & Time</h3>
+
+<label for="service">Choose a Service</label>
+<select id="service">
+<option value="">-- Select Service --</option>
+<option value="Gel X - 1 Color|50">Gel X Full Set - 1 Color ($50)</option>
+<option value="Gel X - Full Design|65">Gel X Full Set - Full Design ($65)</option>
+<option value="Gel Polish - 1 Color|30">Gel Polish - 1 Color ($30)</option>
+<option value="Gel Polish - Full Design|45">Gel Polish - Full Design ($45)</option>
+</select>
+
+<div class="inline">
+<div>
+<label for="date">Choose Date</label>
+<input type="date" id="date" />
+</div>
+<div>
+<label for="time">Choose Time</label>
+<select id="time">
+<option value="">-- Select Time --</option>
+<option>10:00 AM</option>
+<option>12:00 PM</option>
+<option>2:00 PM</option>
+<option>4:00 PM</option>
+<option>6:00 PM</option>
+</select>
+</div>
+</div>
+
+<button id="continueBtn">Continue to Deposit</button>
+</div>
+
 <footer>
-© 2026 Nails by Dessy · Powered by Square Appointments
+© 2026 Nails by Dessy · Booking powered by Square
 </footer>
 </div>
+</div>
+
+<script>
+// Paste your Square public booking link here when ready (keep the quotes)
+const SQUARE_LINK = ""; // e.g. "https://squareup.com/appointments/book/xxxxx"
+
+const bookBtn = document.getElementById('bookBtn');
+const bookingSection = document.getElementById('bookingSection');
+const continueBtn = document.getElementById('continueBtn');
+
+bookBtn.addEventListener('click', () => {
+bookingSection.style.display = 'block';
+bookingSection.scrollIntoView({behavior:'smooth'});
+});
+
+continueBtn.addEventListener('click', () => {
+const service = document.getElementById('service').value;
+const date = document.getElementById('date').value;
+const time = document.getElementById('time').value;
+
+if (!service || !date || !time) {
+alert('Please select a service, date, and time before continuing.');
+return;
+}
+
+// If SQUARE_LINK is set, redirect there so Square handles deposits + confirmation.
+if (SQUARE_LINK) {
+// Append selected service/time as query params so you can reference them in Square if needed.
+const params = new URLSearchParams({service, date, time});
+window.open(SQUARE_LINK + '?' + params.toString(), '_blank');
+return;
+}
+
+// If no Square link yet, show a simple confirmation and instructions for manual handling.
+const [serviceName, price] = service.split('|');
+const confirmText = `You selected:\n\n${serviceName} — $${price}\n${date} at ${time}\n\nNext: we'll need to collect a deposit manually (Square link or Zelle/Cash App).\n\nWould you like to copy this booking info to clipboard to send to Dessy?`;
+
+if (confirm(confirmText)) {
+const bookingInfo = `Service: ${serviceName}\nPrice: $${price}\nDate: ${date}\nTime: ${time}`;
+navigator.clipboard.writeText(bookingInfo).then(() => {
+alert('Booking info copied. Paste it into your message to Dessy and ask the client to pay the deposit.');
+}).catch(() => {
+alert('Could not copy automatically — please select the text and copy manually:\n\n' + bookingInfo);
+});
+}
+});
+</script>
 </body>
 </html>
