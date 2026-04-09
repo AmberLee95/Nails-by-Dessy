@@ -3,272 +3,69 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Nails by Dessy</title>
-
+<title>Nails by Dessy — Home</title>
+<meta name="description" content="Nails by Dessy — pick a look and book. Deposits collected at checkout." />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
 :root{
-  --pink-light:#f8d7e2;
-  --pink-mid:#f6c1cf;
-  --pink-dark:#d24b7c;
-  --black:#111;
-  --white:#fff;
-  --card-radius:14px;
-  --gap:14px;
+  --pink-light:#f8d7e2; --pink-mid:#f6c1cf; --pink-dark:#d24b7c;
+  --black:#111; --white:#fff; --card-radius:14px; --gap:14px;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
   font-family:"Poppins",sans-serif;
   background:linear-gradient(180deg,var(--pink-mid),var(--pink-light));
   color:var(--black);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.5;
   min-height:100vh;
   display:flex;
   align-items:flex-start;
   justify-content:center;
   padding:2rem 1rem;
 }
-
-/* page shell */
-.site {
-  width:100%;
-  max-width:1100px;
-  background:rgba(255,255,255,0.92);
-  border-radius:20px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.12);
-  overflow:hidden;
-}
-
-/* header */
-.header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  padding:1.25rem 1.5rem;
-  background:linear-gradient(90deg,#fff 0%, rgba(255,255,255,0.95) 100%);
-  border-bottom:1px solid rgba(0,0,0,0.04);
-}
-.brand {
-  display:flex;
-  align-items:center;
-  gap:0.9rem;
-}
-.logo {
-  width:56px;
-  height:56px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--pink-dark),#ff9fc2);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--white);
-  font-weight:700;
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem;
-  box-shadow:0 6px 18px rgba(210,75,124,0.12);
-}
-.brand h1{
-  font-family:'Playfair Display',serif;
-  font-size:1.25rem;
-  letter-spacing:0.6px;
-}
-.header-actions{
-  display:flex;
-  gap:0.75rem;
-  align-items:center;
-}
-
-/* primary CTA */
-.primary-cta{
-  background:var(--black);
-  color:var(--white);
-  border:none;
-  padding:0.6rem 1rem;
-  border-radius:12px;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 8px 20px rgba(0,0,0,0.18);
-  font-size:0.95rem;
-}
-.primary-cta:focus{outline:3px solid rgba(210,75,124,0.18);outline-offset:3px}
-
-/* intro area */
-.intro {
-  padding:1.25rem 1.5rem;
-  display:flex;
-  gap:1rem;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-.intro-left{
-  max-width:66%;
-}
-.intro h2{
-  font-family:'Playfair Display',serif;
-  font-size:1.5rem;
-  margin-bottom:0.25rem;
-}
-.intro p{font-size:0.95rem;opacity:0.95}
-
-/* gallery grid */
-.gallery {
-  padding:1rem;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:var(--gap);
-}
-.card {
-  background:var(--white);
-  border-radius:var(--card-radius);
-  overflow:hidden;
-  box-shadow:0 8px 30px rgba(0,0,0,0.06);
-  display:flex;
-  flex-direction:column;
-  cursor:pointer;
-  transition:transform .18s ease, box-shadow .18s ease;
-  border:1px solid rgba(0,0,0,0.03);
-}
-.card:focus{outline:3px solid rgba(210,75,124,0.14);outline-offset:3px}
-.card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,0.12)}
-.card-media{
-  width:100%;
-  aspect-ratio:1/1;
-  background:#f6f6f6;
-  display:block;
-  object-fit:cover;
-}
-.card-body{
-  padding:0.9rem 0.9rem 1rem;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:0.5rem;
-}
-.card-title{
-  font-family:'Playfair Display',serif;
-  font-size:1rem;
-}
+.site{width:100%;max-width:1100px;background:rgba(255,255,255,0.94);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,0.12);overflow:hidden}
+.header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid rgba(0,0,0,0.04)}
+.brand{display:flex;align-items:center;gap:0.9rem}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--pink-dark),#ff9fc2);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-family:'Playfair Display',serif}
+.brand h1{font-family:'Playfair Display',serif;font-size:1.25rem}
+.header-actions{display:flex;gap:0.75rem;align-items:center}
+.primary-cta{background:var(--black);color:var(--white);border:none;padding:0.6rem 1rem;border-radius:12px;font-weight:600;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,0.18);text-decoration:none}
+.intro{padding:1.25rem 1.5rem}
+.intro h2{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:0.25rem}
+.gallery{padding:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.card{background:var(--white);border-radius:var(--card-radius);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.06);display:flex;flex-direction:column;cursor:pointer;transition:transform .18s ease}
+.card:hover{transform:translateY(-6px)}
+.card-media{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f6f6f6;display:block}
+.card-body{padding:0.9rem;display:flex;align-items:center;justify-content:space-between}
+.card-title{font-family:'Playfair Display',serif;font-size:1rem}
 .card-sub{font-size:0.9rem;color:var(--pink-dark);font-weight:600}
-
-/* selected service indicator (above widget) */
-.selected {
-  padding:0.9rem 1.25rem;
-  border-top:1px solid rgba(0,0,0,0.04);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.95));
-}
-.selected .label{font-weight:600}
-.selected .clear-btn{
-  background:transparent;
-  border:1px solid rgba(0,0,0,0.06);
-  padding:0.45rem 0.6rem;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-/* booking widget container (keeps layout tidy) */
-.widget-wrap{
-  padding:1.25rem;
-  border-top:1px solid rgba(0,0,0,0.04);
-  background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98));
-}
-
-/* copyable booking info fallback */
-.booking-fallback{
-  margin-top:0.75rem;
-  display:flex;
-  gap:0.5rem;
-  align-items:flex-start;
-  flex-wrap:wrap;
-}
-.booking-fallback textarea{
-  flex:1 1 320px;
-  min-height:72px;
-  border-radius:10px;
-  border:1px solid #eee;
-  padding:0.6rem;
-  font-family:inherit;
-  resize:vertical;
-}
-.copy-btn{
-  background:var(--black);
-  color:#fff;
-  border:none;
-  padding:0.6rem 0.9rem;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-/* lightbox */
-.lightbox {
-  position:fixed;
-  inset:0;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,0.6);
-  z-index:1200;
-  padding:2rem;
-}
-.lightbox.open{display:flex}
-.lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
-
-/* footer */
-.site-footer{
-  padding:1rem 1.25rem;
-  text-align:center;
-  font-size:0.9rem;
-  color:rgba(0,0,0,0.6);
-}
-
-/* responsive */
-@media (max-width:980px){
-  .gallery{grid-template-columns:repeat(2,1fr)}
-  .intro-left{max-width:100%}
-}
-@media (max-width:600px){
-  body{padding:1rem}
-  .gallery{grid-template-columns:repeat(1,1fr)}
-  .brand h1{font-size:1rem}
-  .logo{width:48px;height:48px}
-  .intro{padding:0.9rem 1rem}
-  .widget-wrap{padding:1rem}
-}
+.site-footer{padding:1rem 1.25rem;text-align:center;font-size:0.9rem;color:rgba(0,0,0,0.6)}
+@media (max-width:980px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){body{padding:1rem}.gallery{grid-template-columns:repeat(1,1fr)}.logo{width:48px;height:48px}}
 </style>
 </head>
 <body>
-
 <div class="site" role="main" aria-labelledby="site-title">
-
   <header class="header">
     <div class="brand" id="site-title">
       <div class="logo" aria-hidden="true">ND</div>
       <h1>Nails by Dessy</h1>
     </div>
-
     <div class="header-actions">
-      <button class="primary-cta" id="bookBtnHeader" aria-label="Open booking">Book</button>
+      <a href="booking.html" class="primary-cta" id="bookBtnHeader">Book</a>
+      <a href="gallery.html" class="primary-cta" style="background:transparent;color:var(--black);border:1px solid rgba(0,0,0,0.06)">Gallery</a>
     </div>
   </header>
 
   <section class="intro" aria-label="Intro">
-    <div class="intro-left">
+    <div>
       <h2>Pick a look — tap to book</h2>
-      <p>Tap any photo to preview it and open the booking popup with the service name shown. Square handles deposits and checkout. Replace the sample images in the <code>images/</code> folder with your photos (same filenames).</p>
+      <p>Tap any photo to go to the booking page with the selected service. Deposits are collected at checkout.</p>
     </div>
   </section>
 
-  <section class="gallery" aria-label="Gallery of sets" id="gallery">
+  <section class="gallery" aria-label="Featured looks" id="gallery">
+    <!-- Replace image paths with your photos -->
     <article class="card" tabindex="0" data-service="Gel X Full Set — 1 Color">
       <img class="card-media" src="images/gelx-1.jpg" alt="Gel X full set, soft pink" loading="lazy">
       <div class="card-body">
@@ -301,237 +98,34 @@ body{
         <div aria-hidden="true">›</div>
       </div>
     </article>
-
-    <article class="card" tabindex="0" data-service="Gel Polish — Full Design">
-      <img class="card-media" src="images/gelpolish-2.jpg" alt="Gel polish full design" loading="lazy">
-      <div class="card-body">
-        <div>
-          <div class="card-title">Gel Polish</div>
-          <div class="card-sub">$45 — Full Design</div>
-        </div>
-        <div aria-hidden="true">›</div>
-      </div>
-    </article>
-
-    <article class="card" tabindex="0" data-service="Take Off & Shaped">
-      <img class="card-media" src="images/takeoff-1.jpg" alt="Take off and shaped nails" loading="lazy">
-      <div class="card-body">
-        <div>
-          <div class="card-title">Take Off & Shaped</div>
-          <div class="card-sub">$15</div>
-        </div>
-        <div aria-hidden="true">›</div>
-      </div>
-    </article>
-
-    <article class="card" tabindex="0" data-service="Custom Long Set">
-      <img class="card-media" src="images/long-1.jpg" alt="Custom long set with art" loading="lazy">
-      <div class="card-body">
-        <div>
-          <div class="card-title">Custom Long Set</div>
-          <div class="card-sub">From $65</div>
-        </div>
-        <div aria-hidden="true">›</div>
-      </div>
-    </article>
   </section>
 
-  <div class="selected" id="selectedBar" style="display:none" aria-live="polite">
-    <div class="label">Selected: <span id="selectedName"></span></div>
-    <div>
-      <button class="clear-btn" id="clearSelection" aria-label="Clear selection">Clear</button>
-    </div>
-  </div>
-
-  <div class="widget-wrap" id="widgetWrap" aria-label="Booking widget area">
-    <div style="font-size:0.95rem;color:#333">Tap a look to open booking. If you prefer, copy the booking info and send it in a message.</div>
-
-    <div class="booking-fallback" id="fallback" style="display:none">
-      <textarea id="bookingCopy" readonly aria-label="Booking information"></textarea>
-      <button class="copy-btn" id="copyBtn">Copy</button>
-    </div>
-  </div>
-
-  <!-- The Square embed script must be outside hidden containers -->
-  <script src="https://square.site/appointments/buyer/widget/ickunwmfpcaaeq/LFPSTBSCC5S2B.js"></script>
-
-  <footer class="site-footer">
-    © 2026 Nails by Dessy · Booking powered by Square
-  </footer>
+  <footer class="site-footer">© 2026 Nails by Dessy · Booking powered by Square</footer>
 </div>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-  <img src="" alt="" id="lightboxImg">
-</div>
-
-<!-- Styling overrides for the Square popup (keeps the popup on-brand) -->
-<style>
-/* Ensure Square popup uses your fonts and colors */
-.sq-appointments-container *{font-family:'Poppins',sans-serif!important}
-.sq-appointments-container{border-radius:16px!important;box-shadow:0 20px 60px rgba(0,0,0,0.18)!important;background:#fff!important}
-.sq-appointments-button,.sq-appointments-button *{background:#111!important;color:#fff!important;border-radius:12px!important;font-weight:600!important;padding:0.8rem 1rem!important}
-.sq-appointments-button:hover{background:var(--pink-dark)!important}
-.sq-appointments-container input,.sq-appointments-container select{border-radius:10px!important;border:1px solid #eee!important;padding:0.6rem!important}
-.sq-appointments-container h1,.sq-appointments-container h2,.sq-appointments-container h3{font-family:'Playfair Display',serif!important;color:#111!important}
-</style>
 
 <script>
-/* Behavior:
- - Clicking a gallery card previews the image (lightbox), sets the selected service, and opens Square popup.
- - Header Book button opens popup without a selection.
- - Fallback textarea appears so you can copy booking info if needed.
- - Waits for Square widget to be ready before opening.
-*/
-
 const gallery = document.getElementById('gallery');
-const selectedBar = document.getElementById('selectedBar');
-const selectedName = document.getElementById('selectedName');
-const clearBtn = document.getElementById('clearSelection');
-const bookBtnHeader = document.getElementById('bookBtnHeader');
-const fallback = document.getElementById('fallback');
-const bookingCopy = document.getElementById('bookingCopy');
-const copyBtn = document.getElementById('copyBtn');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-
-let currentSelection = null;
-
-// Wait until SquareAppointments is ready, then call fn
-function whenSquareReady(fn){
-  if (window.SquareAppointments && typeof SquareAppointments.openPopupWidget === 'function') {
-    fn();
-  } else {
-    const t = setInterval(() => {
-      if (window.SquareAppointments && typeof SquareAppointments.openPopupWidget === 'function') {
-        clearInterval(t);
-        fn();
-      }
-    }, 120);
-    setTimeout(() => clearInterval(t), 10000);
-  }
-}
-
-function openPopup(){
-  whenSquareReady(() => {
-    try {
-      SquareAppointments.openPopupWidget();
-    } catch (e) {
-      console.warn('Square popup failed to open', e);
-      // show fallback so client can message you manually
-      showFallback();
-    }
-  });
-}
-
-function showFallback(){
-  if (!currentSelection) return;
-  bookingCopy.value = `Service: ${currentSelection}`;
-  fallback.style.display = 'flex';
-}
-
-// Gallery click (delegation)
 gallery.addEventListener('click', (e) => {
   const card = e.target.closest('.card');
   if (!card) return;
-  const img = card.querySelector('.card-media');
-  const service = card.getAttribute('data-service') || 'Service';
-  // show lightbox preview
-  if (img && img.src) {
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || service;
-    lightbox.classList.add('open');
-    lightbox.setAttribute('aria-hidden','false');
-  }
-  // set selection
-  currentSelection = service;
-  selectedName.textContent = service;
-  selectedBar.style.display = 'flex';
-  // prepare fallback text
-  bookingCopy.value = `Service: ${service}`;
-  fallback.style.display = 'flex';
-  // open Square popup
-  openPopup();
+  const service = card.getAttribute('data-service') || '';
+  const url = new URL(window.location.href);
+  url.pathname = 'booking.html';
+  if (service) url.searchParams.set('service', service);
+  window.location.href = url.toString();
 });
-
-// keyboard support for cards
 gallery.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' || e.key === ' ') {
     const card = e.target.closest('.card');
     if (!card) return;
     e.preventDefault();
-    const img = card.querySelector('.card-media');
-    const service = card.getAttribute('data-service') || 'Service';
-    if (img && img.src) {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt || service;
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden','false');
-    }
-    currentSelection = service;
-    selectedName.textContent = service;
-    selectedBar.style.display = 'flex';
-    bookingCopy.value = `Service: ${service}`;
-    fallback.style.display = 'flex';
-    openPopup();
+    const service = card.getAttribute('data-service') || '';
+    const url = new URL(window.location.href);
+    url.pathname = 'booking.html';
+    if (service) url.searchParams.set('service', service);
+    window.location.href = url.toString();
   }
 });
-
-// close lightbox on click or Esc
-lightbox.addEventListener('click', () => {
-  lightbox.classList.remove('open');
-  lightbox.setAttribute('aria-hidden','true');
-  lightboxImg.src = '';
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden','true');
-    lightboxImg.src = '';
-  }
-});
-
-// clear selection
-clearBtn.addEventListener('click', () => {
-  currentSelection = null;
-  selectedBar.style.display = 'none';
-  selectedName.textContent = '';
-  fallback.style.display = 'none';
-});
-
-// header book button opens popup without selection
-bookBtnHeader.addEventListener('click', () => {
-  currentSelection = null;
-  selectedBar.style.display = 'none';
-  selectedName.textContent = '';
-  fallback.style.display = 'none';
-  openPopup();
-});
-
-// copy fallback text
-copyBtn.addEventListener('click', async () => {
-  try {
-    await navigator.clipboard.writeText(bookingCopy.value);
-    copyBtn.textContent = 'Copied';
-    setTimeout(() => copyBtn.textContent = 'Copy', 1500);
-  } catch {
-    bookingCopy.select();
-    document.execCommand('copy');
-    copyBtn.textContent = 'Copied';
-    setTimeout(() => copyBtn.textContent = 'Copy', 1500);
-  }
-});
-
-// small accessibility: announce selection changes
-const observer = new MutationObserver(() => {
-  if (currentSelection) {
-    selectedBar.setAttribute('aria-hidden','false');
-  } else {
-    selectedBar.setAttribute('aria-hidden','true');
-  }
-});
-observer.observe(selectedName, {childList:true, subtree:true});
 </script>
-
 </body>
 </html>
