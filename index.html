@@ -130,7 +130,7 @@ footer {
   .booking-section { padding: 1.5rem; }
 }
 
-  /* Square Popup Styling — Nails by Dessy Aesthetic */
+/* Square Popup Styling — Nails by Dessy Aesthetic */
 .sq-appointments-container * {
   font-family: 'Poppins', sans-serif !important;
 }
@@ -145,7 +145,7 @@ footer {
 /* Buttons */
 .sq-appointments-button,
 .sq-appointments-button * {
-  background-color: #111 !important; /* black button */
+  background-color: #111 !important;
   color: #fff !important;
   border-radius: 12px !important;
   font-weight: 500 !important;
@@ -154,7 +154,7 @@ footer {
 
 /* Hover */
 .sq-appointments-button:hover {
-  background-color: #d24b7c !important; /* your pink */
+  background-color: #d24b7c !important;
 }
 
 /* Inputs */
@@ -172,7 +172,6 @@ footer {
   font-family: 'Playfair Display', serif !important;
   color: #111 !important;
 }
-
 </style>
 </head>
 
@@ -211,10 +210,10 @@ footer {
 
 <div class="booking-section" id="bookingSection" style="display:none;">
   <h3>Book Your Appointment</h3>
-
-  <!-- Square Embedded Booking Widget -->
-  <script src="https://square.site/appointments/buyer/widget/ickunwmfpcaaeq/LFPSTBSCC5S2B.js"></script>
 </div>
+
+<!-- Square widget MUST be outside hidden div -->
+<script src="https://square.site/appointments/buyer/widget/ickunwmfpcaaeq/LFPSTBSCC5S2B.js"></script>
 
 <footer>
   © 2026 Nails by Dessy · Booking powered by Square
@@ -226,16 +225,16 @@ footer {
 <script>
 const bookBtn = document.getElementById('bookBtn');
 
-bookBtn.addEventListener('click', () => {
-  if (window.SquareAppointments) {
+function openSquarePopup() {
+  if (window.SquareAppointments && SquareAppointments.openPopupWidget) {
     SquareAppointments.openPopupWidget();
   } else {
-    console.warn("Square widget not loaded yet");
+    setTimeout(openSquarePopup, 100);
   }
-});
+}
+
+bookBtn.addEventListener('click', openSquarePopup);
 </script>
-
-
 
 </body>
 </html>
