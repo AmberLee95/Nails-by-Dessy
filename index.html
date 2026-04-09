@@ -129,6 +129,50 @@ footer {
   .price-section { padding: 1.5rem; }
   .booking-section { padding: 1.5rem; }
 }
+
+  /* Square Popup Styling — Nails by Dessy Aesthetic */
+.sq-appointments-container * {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Main popup box */
+.sq-appointments-container {
+  border-radius: 20px !important;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25) !important;
+  background: #fff !important;
+}
+
+/* Buttons */
+.sq-appointments-button,
+.sq-appointments-button * {
+  background-color: #111 !important; /* black button */
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-weight: 500 !important;
+  padding: 0.9rem 1.2rem !important;
+}
+
+/* Hover */
+.sq-appointments-button:hover {
+  background-color: #d24b7c !important; /* your pink */
+}
+
+/* Inputs */
+.sq-appointments-container input,
+.sq-appointments-container select {
+  border-radius: 10px !important;
+  border: 1px solid #ddd !important;
+  padding: 0.7rem !important;
+}
+
+/* Headings */
+.sq-appointments-container h1,
+.sq-appointments-container h2,
+.sq-appointments-container h3 {
+  font-family: 'Playfair Display', serif !important;
+  color: #111 !important;
+}
+
 </style>
 </head>
 
@@ -181,13 +225,17 @@ footer {
 
 <script>
 const bookBtn = document.getElementById('bookBtn');
-const bookingSection = document.getElementById('bookingSection');
 
 bookBtn.addEventListener('click', () => {
-  bookingSection.style.display = 'block';
-  bookingSection.scrollIntoView({ behavior: 'smooth' });
+  if (window.SquareAppointments) {
+    SquareAppointments.openPopupWidget();
+  } else {
+    console.warn("Square widget not loaded yet");
+  }
 });
 </script>
+
+
 
 </body>
 </html>
