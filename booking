@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nails by Dessy — Book</title>
+<meta name="description" content="Book an appointment with Nails by Dessy. Deposits required at checkout." />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--pink-light:#f8d7e2;--pink-mid:#f6c1cf;--pink-dark:#d24b7c;--black:#111;--white:#fff;--card-radius:12px}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+body{font-family:"Poppins",sans-serif;background:linear-gradient(180deg,var(--pink-mid),var(--pink-light));color:var(--black);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem}
+.container{width:100%;max-width:900px;background:rgba(255,255,255,0.96);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.12);overflow:hidden}
+.header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.04)}
+.brand h1{font-family:'Playfair Display',serif;font-size:1.15rem}
+.back-link{color:var(--black);text-decoration:none;font-weight:600}
+.selected-service{padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(0,0,0,0.04)}
+.selected-service .label{font-weight:600;font-family:'Playfair Display',serif}
+.widget-area{padding:1.25rem;min-height:60vh;display:flex;flex-direction:column;gap:1rem}
+.note{font-size:0.95rem;color:#333}
+.fallback{margin-top:0.5rem;display:flex;gap:0.5rem;align-items:flex-start;flex-wrap:wrap}
+.fallback textarea{flex:1 1 320px;min-height:72px;border-radius:10px;border:1px solid #eee;padding:0.6rem}
+.copy-btn{background:var(--black);color:#fff;border:none;padding:0.6rem 0.9rem;border-radius:10px;cursor:pointer}
+.site-footer{padding:1rem 1.25rem;text-align:center;font-size:0.9rem;color:rgba(0,0,0,0.6)}
+@media (max-width:600px){body{padding:1rem}.widget-area{padding:1rem}}
+/* Square popup styling */
+.sq-appointments-container *{font-family:'Poppins',sans-serif!important}
+.sq-appointments-container{border-radius:16px!important;box-shadow:0 20px 60px rgba(0,0,0,0.18)!important;background:#fff!important}
+.sq-appointments-button,.sq-appointments-button *{background:#111!important;color:#fff!important;border-radius:12px!important;font-weight:600!important;padding:0.8rem 1rem!important}
+.sq-appointments-button:hover{background:var(--pink-dark)!important}
+.sq-appointments-container input,.sq-appointments-container select{border-radius:10px!important;border:1px solid #eee!important;padding:0.6rem!important}
+.sq-appointments-container h1,.sq-appointments-container h2,.sq-appointments-container h3{font-family:'Playfair Display',serif!important;color:#111!important}
+</style>
+</head>
+<body>
+<div class="container" role="main" aria-labelledby="book-title">
+  <header class="header">
+    <div class="brand">
+      <a href="index.html" class="back-link" aria-label="Back to gallery">← Back</a>
+      <h1 id="book-title">Book with Dessy</h1>
+    </div>
+    <div class="header-actions">
+      <button id="openPopupBtn" class="copy-btn" aria-label="Open booking popup">Open Booking</button>
+    </div>
+  </header>
+
+  <div class="selected-service" id="selectedServiceBar" style="display:none" aria-live="polite">
+    <div>
+      <div class="label">Selected</div>
+      <div id="selectedServiceName" style="margin-top:4px;font-weight:600"></div>
+    </div>
+    <div>
+      <button id="clearBtn" class="copy-btn" style="background:transparent;color:var(--black);border:1px solid rgba(0,0,0,0.06)">Clear</button>
+    </div>
+  </div>
+
+  <main class="widget-area" id="widgetArea">
+    <div class="note">Square handles deposits and checkout. Complete your booking in the popup that appears.</div>
+
+    <div class="fallback" id="fallback" style="display:none">
+      <textarea id="bookingCopy" readonly aria-label="Booking information"></textarea>
+      <button id="copyBtn" class="copy-btn">Copy</button>
+    </div>
+  </main>
+
+  <!-- Square embed script (keep outside hidden containers). Replace with your embed if needed. -->
+  <script src="https://square.site/appointments/buyer/widget/ickunwmfpcaaeq/LFPSTBSCC5S2B.js"></script>
+
+  <footer class="site-footer">© 2026 Nails by Dessy · Booking powered by Square</footer>
+</div>
+
+<script>
+function getQueryParam(name){const params=new URLSearchParams(window.location.search);return params.get(name)}
+const selectedServiceBar=document.getElementById('selectedServiceBar');
+const selectedServiceName=document.getElementById('selectedServiceName');
+const fallback=document.getElementById('fallback');
+const bookingCopy=document.getElementById('bookingCopy');
+const copyBtn=document.getElementById('copyBtn');
+const openPopupBtn=document.getElementById('openPopupBtn');
+const clearBtn=document.getElementById('clearBtn');
+
+let selectedService = getQueryParam('service') || '';
+if (selectedService) {
+  selectedService = decodeURIComponent(selectedService);
+  selectedServiceName.textContent = selectedService;
+  selectedServiceBar.style.display = 'flex';
+  bookingCopy.value = `Service: ${selectedService}`;
+  fallback.style.display = 'flex';
+}
+
+function whenSquareReady(fn){
+  if (window.SquareAppointments && typeof SquareAppointments.openPopupWidget === 'function') { fn(); return; }
+  const t = setInterval(()=>{ if (window.SquareAppointments && typeof SquareAppointments.openPopupWidget === 'function'){ clearInterval(t); fn(); } }, 120);
+  setTimeout(()=>clearInterval(t),10000);
+}
+function openPopup(){
+  whenSquareReady(()=>{ try{ SquareAppointments.openPopupWidget(); } catch(e){ console.warn('Square popup failed',e); if (!selectedService){ bookingCopy.value='Open the booking widget from the button above or message me with the service you want.'; fallback.style.display='flex'; } } });
+}
+if (selectedService) setTimeout(openPopup,450);
+openPopupBtn.addEventListener('click', openPopup);
+copyBtn.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText(bookingCopy.value); copyBtn.textContent='Copied'; setTimeout(()=>copyBtn.textContent='Copy',1500); } catch{ bookingCopy.select(); document.execCommand('copy'); copyBtn.textContent='Copied'; setTimeout(()=>copyBtn.textContent='Copy',1500); } });
+clearBtn.addEventListener('click', ()=>{ selectedService=''; selectedServiceBar.style.display='none'; fallback.style.display='none'; bookingCopy.value=''; });
+</script>
+</body>
+</html>
