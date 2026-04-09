@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Nails by Dessy — Gallery</title>
+<meta name="description" content="Gallery of Nails by Dessy — full portfolio." />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--pink-light:#f8d7e2;--pink-mid:#f6c1cf;--pink-dark:#d24b7c;--black:#111;--white:#fff;--card-radius:12px;--gap:12px}
+*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+body{font-family:"Poppins",sans-serif;background:linear-gradient(180deg,var(--pink-mid),var(--pink-light));color:var(--black);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem}
+.site{width:100%;max-width:1100px;background:rgba(255,255,255,0.94);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.12);overflow:hidden}
+.header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.04)}
+.brand h1{font-family:'Playfair Display',serif;font-size:1.15rem}
+.gallery{padding:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.card{border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.06);cursor:pointer}
+.card-media{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.site-footer{padding:1rem 1.25rem;text-align:center;font-size:0.9rem;color:rgba(0,0,0,0.6)}
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:1200;padding:2rem}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+@media (max-width:980px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){body{padding:1rem}.gallery{grid-template-columns:repeat(1,1fr)}}
+</style>
+</head>
+<body>
+<div class="site" role="main" aria-labelledby="gallery-title">
+  <header class="header">
+    <div class="brand" id="gallery-title"><h1>Nails by Dessy — Gallery</h1></div>
+    <div class="header-actions">
+      <a href="index.html" style="text-decoration:none;color:var(--black);font-weight:600">Home</a>
+      <a href="booking.html" style="text-decoration:none;background:var(--black);color:#fff;padding:0.5rem 0.8rem;border-radius:10px;margin-left:8px">Book</a>
+    </div>
+  </header>
+
+  <section class="gallery" id="gallery">
+    <!-- Add as many images as you want -->
+    <div class="card"><img class="card-media" src="images/gelx-1.jpg" alt="Gel X set 1" loading="lazy"></div>
+    <div class="card"><img class="card-media" src="images/gelx-2.jpg" alt="Gel X set 2" loading="lazy"></div>
+    <div class="card"><img class="card-media" src="images/gelpolish-1.jpg" alt="Gel polish 1" loading="lazy"></div>
+    <div class="card"><img class="card-media" src="images/gelpolish-2.jpg" alt="Gel polish 2" loading="lazy"></div>
+    <div class="card"><img class="card-media" src="images/takeoff-1.jpg" alt="Take off & shaped" loading="lazy"></div>
+    <div class="card"><img class="card-media" src="images/long-1.jpg" alt="Custom long set" loading="lazy"></div>
+  </section>
+
+  <footer class="site-footer">© 2026 Nails by Dessy · Booking powered by Square</footer>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true"><img src="" alt="" id="lightboxImg"></div>
+
+<script>
+const gallery = document.getElementById('gallery');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+
+gallery.addEventListener('click', (e) => {
+  const img = e.target.closest('.card')?.querySelector('img');
+  if (!img) return;
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt || '';
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden','false');
+});
+lightbox.addEventListener('click', () => { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden','true'); lightboxImg.src=''; });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden','true'); lightboxImg.src=''; } });
+</script>
+</body>
+</html>
