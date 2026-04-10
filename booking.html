@@ -7,77 +7,184 @@
 <meta name="description" content="Book an appointment with Nails by Dessy. Deposits required at checkout." />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--pink-light:#f8d7e2;--pink-mid:#f6c1cf;--pink-dark:#d24b7c;--black:#111;--white:#fff;--card-radius:12px}
-*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
-body{font-family:"Poppins",sans-serif;background:linear-gradient(180deg,var(--pink-mid),var(--pink-light));color:var(--black);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem}
-.container{width:100%;max-width:900px;background:rgba(255,255,255,0.96);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.12);overflow:hidden}
-.header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid rgba(0,0,0,0.04)}
-.brand h1{font-family:'Playfair Display',serif;font-size:1.15rem}
-.back-link{color:var(--black);text-decoration:none;font-weight:600}
-.selected-service{padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(0,0,0,0.04)}
-.selected-service .label{font-weight:600;font-family:'Playfair Display',serif}
-.widget-area{padding:1.25rem;min-height:60vh;display:flex;flex-direction:column;gap:1rem}
-.note{font-size:0.95rem;color:#333}
-.fallback{margin-top:0.5rem;display:flex;gap:0.5rem;align-items:flex-start;flex-wrap:wrap}
-.fallback textarea{flex:1 1 320px;min-height:72px;border-radius:10px;border:1px solid #eee;padding:0.6rem}
-.copy-btn{background:var(--black);color:#fff;border:none;padding:0.6rem 0.9rem;border-radius:10px;cursor:pointer}
-.site-footer{padding:1rem 1.25rem;text-align:center;font-size:0.9rem;color:rgba(0,0,0,0.6)}
-@media (max-width:600px){body{padding:1rem}.widget-area{padding:1rem}}
-/* Square popup styling */
-.sq-appointments-container *{font-family:'Poppins',sans-serif!important}
-.sq-appointments-container{border-radius:16px!important;box-shadow:0 20px 60px rgba(0,0,0,0.18)!important;background:#fff!important}
-.sq-appointments-button,.sq-appointments-button *{background:#111!important;color:#fff!important;border-radius:12px!important;font-weight:600!important;padding:0.8rem 1rem!important}
-.sq-appointments-button:hover{background:var(--pink-dark)!important}
-.sq-appointments-container input,.sq-appointments-container select{border-radius:10px!important;border:1px solid #eee!important;padding:0.6rem!important}
-.sq-appointments-container h1,.sq-appointments-container h2,.sq-appointments-container h3{font-family:'Playfair Display',serif!important;color:#111!important}
+:root{
+  --pink-light:#f8d7e2;
+  --pink-mid:#f6c1cf;
+  --pink-dark:#d24b7c;
+  --black:#111;
+  --white:#fff;
+  --radius:14px;
+  --gap:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Poppins",sans-serif;
+  background:linear-gradient(180deg,var(--pink-mid),var(--pink-light));
+  color:var(--black);
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:1.5rem;
+}
+
+/* container that matches the rest of the site */
+.container {
+  width:100%;
+  max-width:1100px;
+  background:rgba(255,255,255,0.98);
+  border-radius:16px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.12);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:80vh;
+}
+
+/* header */
+.header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1rem 1.25rem;
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.brand { display:flex; align-items:center; gap:0.9rem; }
+.logo {
+  width:48px; height:48px; border-radius:12px;
+  background:linear-gradient(135deg,var(--pink-dark),#ff9fc2);
+  display:flex; align-items:center; justify-content:center; color:var(--white);
+  font-weight:700; font-family:'Playfair Display',serif;
+}
+.brand h1{ font-family:'Playfair Display',serif; font-size:1.05rem; margin:0; }
+.back-link{ color:var(--black); text-decoration:none; font-weight:600; }
+
+/* selected service bar */
+.selected-service {
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:0.9rem 1.25rem;
+  border-bottom:1px solid rgba(0,0,0,0.04);
+  background:linear-gradient(180deg, rgba(255,255,255,0.99), rgba(255,255,255,0.98));
+}
+.selected-service .label { font-weight:600; font-family:'Playfair Display',serif; }
+.selected-service .name { margin-top:4px; font-weight:600; }
+
+/* iframe area */
+.iframe-wrap {
+  padding:1.25rem;
+  flex:1 1 auto;
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+}
+.iframe-card {
+  flex:1 1 auto;
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 12px 40px rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.03);
+  min-height:420px;
+}
+iframe.booking-iframe {
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+
+/* note and fallback */
+.note { font-size:0.95rem; color:#333; }
+.fallback { display:none; gap:0.5rem; align-items:flex-start; margin-top:0.5rem; flex-wrap:wrap; }
+.fallback textarea { flex:1 1 320px; min-height:72px; border-radius:10px; border:1px solid #eee; padding:0.6rem; }
+.copy-btn { background:var(--black); color:#fff; border:none; padding:0.6rem 0.9rem; border-radius:10px; cursor:pointer; }
+
+/* footer */
+.site-footer { padding:1rem 1.25rem; text-align:center; font-size:0.9rem; color:rgba(0,0,0,0.6); }
+
+/* responsive */
+@media (min-width:1000px){
+  .container { margin-top:2.5rem; }
+  .iframe-wrap { height: calc(100vh - 220px); }
+}
+@media (max-width:600px){
+  body{padding:0.75rem}
+  .header{padding:0.75rem}
+  .iframe-wrap{padding:0.9rem}
+  .iframe-card{border-radius:10px}
+}
 </style>
 </head>
 <body>
 <div class="container" role="main" aria-labelledby="book-title">
   <header class="header">
     <div class="brand">
-      <a href="index.html" class="back-link" aria-label="Back to gallery">← Back</a>
-      <h1 id="book-title">Book with Dessy</h1>
+      <a href="index.html" class="back-link" aria-label="Back to home">← Home</a>
+      <div style="display:flex;flex-direction:column;">
+        <h1 id="book-title">Book with Dessy</h1>
+        <div style="font-size:0.85rem;color:#666;margin-top:4px">Deposits collected at checkout</div>
+      </div>
     </div>
-    <div class="header-actions">
-      <button id="openPopupBtn" class="copy-btn" aria-label="Open booking popup">Open Booking</button>
+    <div>
+      <button id="openInTab" class="copy-btn" aria-label="Open booking in new tab">Open in new tab</button>
     </div>
   </header>
 
-  <div class="selected-service" id="selectedServiceBar" style="display:none" aria-live="polite">
+  <div class="selected-service" id="selectedServiceBar" aria-live="polite">
     <div>
       <div class="label">Selected</div>
-      <div id="selectedServiceName" style="margin-top:4px;font-weight:600"></div>
+      <div id="selectedServiceName" class="name"></div>
     </div>
     <div>
       <button id="clearBtn" class="copy-btn" style="background:transparent;color:var(--black);border:1px solid rgba(0,0,0,0.06)">Clear</button>
     </div>
   </div>
 
-  <main class="widget-area" id="widgetArea">
-    <div class="note">Square handles deposits and checkout. Complete your booking in the popup that appears.</div>
+  <div class="iframe-wrap">
+    <div class="note" id="note">If the booking surface does not load, use Open in new tab.</div>
 
-    <div class="fallback" id="fallback" style="display:none">
+    <div class="iframe-card" id="iframeCard">
+      <!-- iframe will be set by script -->
+      <iframe id="bookingIframe" class="booking-iframe" src="" title="Book with Nails by Dessy" loading="lazy" allow="payment *; geolocation *"></iframe>
+    </div>
+
+    <div class="fallback" id="fallback">
       <textarea id="bookingCopy" readonly aria-label="Booking information"></textarea>
       <button id="copyBtn" class="copy-btn">Copy</button>
     </div>
-  </main>
-
-  <!-- Square embed script (keep outside hidden containers). Replace with your embed if needed. -->
-  <script src="https://square.site/appointments/buyer/widget/ickunwmfpcaaeq/LFPSTBSCC5S2B.js"></script>
+  </div>
 
   <footer class="site-footer">© 2026 Nails by Dessy · Booking powered by Square</footer>
 </div>
 
 <script>
-function getQueryParam(name){const params=new URLSearchParams(window.location.search);return params.get(name)}
-const selectedServiceBar=document.getElementById('selectedServiceBar');
-const selectedServiceName=document.getElementById('selectedServiceName');
-const fallback=document.getElementById('fallback');
-const bookingCopy=document.getElementById('bookingCopy');
-const copyBtn=document.getElementById('copyBtn');
-const openPopupBtn=document.getElementById('openPopupBtn');
-const clearBtn=document.getElementById('clearBtn');
+/*
+  Square booking URL provided by user:
+  https://app.squareup.com/appointments/book/ickunwmfpcaaeq/LFPSTBSCC5S2B/start
+  This file uses that URL as the embedded booking surface.
+*/
+
+const SQUARE_BOOKING_URL = 'https://app.squareup.com/appointments/book/ickunwmfpcaaeq/LFPSTBSCC5S2B/start';
+
+const selectedServiceBar = document.getElementById('selectedServiceBar');
+const selectedServiceName = document.getElementById('selectedServiceName');
+const bookingIframe = document.getElementById('bookingIframe');
+const fallback = document.getElementById('fallback');
+const bookingCopy = document.getElementById('bookingCopy');
+const copyBtn = document.getElementById('copyBtn');
+const openInTab = document.getElementById('openInTab');
+const clearBtn = document.getElementById('clearBtn');
+const note = document.getElementById('note');
+
+function getQueryParam(name){
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
 
 let selectedService = getQueryParam('service') || '';
 if (selectedService) {
@@ -88,18 +195,68 @@ if (selectedService) {
   fallback.style.display = 'flex';
 }
 
-function whenSquareReady(fn){
-  if (window.SquareAppointments && typeof SquareAppointments.openPopupWidget === 'function') { fn(); return; }
-  const t = setInterval(()=>{ if (window.SquareAppointments && typeof SquareAppointments.openPopupWidget === 'function'){ clearInterval(t); fn(); } }, 120);
-  setTimeout(()=>clearInterval(t),10000);
+// Build iframe URL. We append a ref param for tracking; Square may not auto-select a service.
+function buildIframeUrl(){
+  try {
+    const url = new URL(SQUARE_BOOKING_URL);
+    if (selectedService) url.searchParams.set('ref_service', selectedService);
+    return url.toString();
+  } catch (e) {
+    return SQUARE_BOOKING_URL;
+  }
 }
-function openPopup(){
-  whenSquareReady(()=>{ try{ SquareAppointments.openPopupWidget(); } catch(e){ console.warn('Square popup failed',e); if (!selectedService){ bookingCopy.value='Open the booking widget from the button above or message me with the service you want.'; fallback.style.display='flex'; } } });
+
+// Try to load the iframe and detect if it was blocked by X-Frame-Options
+function loadIframe(){
+  const url = buildIframeUrl();
+  bookingIframe.src = url;
+
+  // After a short delay, check if iframe loaded by attempting to detect obvious failures
+  setTimeout(() => {
+    const win = bookingIframe.contentWindow;
+    const blocked = !win || bookingIframe.clientHeight === 0;
+    if (blocked) {
+      note.textContent = 'Booking page could not be embedded. Use Open in new tab to continue.';
+      if (selectedService) fallback.style.display = 'flex';
+    } else {
+      note.textContent = 'Complete your booking in the embedded booking surface below.';
+      fallback.style.display = selectedService ? 'flex' : 'none';
+    }
+  }, 900);
 }
-if (selectedService) setTimeout(openPopup,450);
-openPopupBtn.addEventListener('click', openPopup);
-copyBtn.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText(bookingCopy.value); copyBtn.textContent='Copied'; setTimeout(()=>copyBtn.textContent='Copy',1500); } catch{ bookingCopy.select(); document.execCommand('copy'); copyBtn.textContent='Copied'; setTimeout(()=>copyBtn.textContent='Copy',1500); } });
-clearBtn.addEventListener('click', ()=>{ selectedService=''; selectedServiceBar.style.display='none'; fallback.style.display='none'; bookingCopy.value=''; });
+
+// Open booking URL in a new tab (fallback)
+openInTab.addEventListener('click', () => {
+  const url = buildIframeUrl();
+  window.open(url, '_blank', 'noopener');
+});
+
+// copy fallback text
+copyBtn.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(bookingCopy.value);
+    copyBtn.textContent = 'Copied';
+    setTimeout(() => copyBtn.textContent = 'Copy', 1500);
+  } catch {
+    bookingCopy.select();
+    document.execCommand('copy');
+    copyBtn.textContent = 'Copied';
+    setTimeout(() => copyBtn.textContent = 'Copy', 1500);
+  }
+});
+
+// clear selection
+clearBtn.addEventListener('click', () => {
+  selectedService = '';
+  selectedServiceBar.style.display = 'none';
+  fallback.style.display = 'none';
+  bookingCopy.value = '';
+  // reload iframe without ref param
+  bookingIframe.src = SQUARE_BOOKING_URL;
+});
+
+// Auto-load iframe
+loadIframe();
 </script>
 </body>
 </html>
